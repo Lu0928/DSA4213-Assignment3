@@ -5,7 +5,7 @@ The code and outcome of DSA4213 Assignment3 is in the .ipnyfiles.If you want to 
 
 # Assignment 3: Fine-tuning DistilBERT for Sentiment Analysis
 
-[cite_start]This repository contains the code and documentation for Assignment 3, which explores fine-tuning pretrained Transformer models for a downstream task[cite: 2]. The project focuses on sentiment analysis using the IMDb dataset.
+This repository contains the code and documentation for Assignment 3, which explores fine-tuning pretrained Transformer models for a downstream task. The project focuses on sentiment analysis using the IMDb dataset.
 
 ## 📝 Table of Contents
 * [Project Overview](#-project-overview)
@@ -20,26 +20,26 @@ The code and outcome of DSA4213 Assignment3 is in the .ipnyfiles.If you want to 
 
 ## 📖 Project Overview
 
-[cite_start]This project implements and compares two fine-tuning strategies for adapting a pretrained Transformer model to a text classification task[cite: 9, 14]. The chosen model is **DistilBERT**, and the task is **sentiment analysis** on the IMDb movie review dataset. [cite_start]The goal is to evaluate the performance and efficiency trade-offs between full fine-tuning and a parameter-efficient fine-tuning (PEFT) method, specifically **LoRA**[cite: 13, 18].
+This project implements and compares two fine-tuning strategies for adapting a pretrained Transformer model to a text classification task. The chosen model is **DistilBERT**, and the task is **sentiment analysis** on the IMDb movie review dataset. The goal is to evaluate the performance and efficiency trade-offs between full fine-tuning and a parameter-efficient fine-tuning (PEFT) method, specifically **LoRA**.
 
 ## 📊 Dataset
 
-[cite_start]The project uses the **IMDb dataset**, a well-known benchmark for binary sentiment classification[cite: 8]. It consists of 50,000 highly polarized movie reviews (25,000 for training and 25,000 for testing), which are labeled as either positive or negative.
+The project uses the **IMDb dataset**, a well-known benchmark for binary sentiment classification[cite: 8]. It consists of 50,000 highly polarized movie reviews (25,000 for training and 25,000 for testing), which are labeled as either positive or negative.
 
-[cite_start]**Motivation for Choice**[cite: 22]:
+**Motivation for Choice**:
 * **Standard Benchmark**: It is a classic and widely used dataset for sentiment analysis, which makes it easy to compare results against established baselines.
 * **Sufficient Size**: The dataset is large enough to demonstrate the effectiveness of fine-tuning without being computationally prohibitive.
 * **Clear Task**: The binary classification task is straightforward, allowing the focus to remain on the fine-tuning techniques themselves.
 
 ## 🤖 Models and Fine-Tuning Strategies
 
-[cite_start]The following model and strategies were implemented[cite: 23]:
+The following model and strategies were implemented:
 
-* [cite_start]**Pretrained Model**: `distilbert-base-uncased` was chosen as the base model[cite: 5]. [cite_start]It's a smaller, faster, and lighter version of BERT, making it suitable for experiments with limited computing resources[cite: 6].
+* **Pretrained Model**: `distilbert-base-uncased` was chosen as the base model. It's a smaller, faster, and lighter version of BERT, making it suitable for experiments with limited computing resources.
 
 * **Fine-Tuning Strategies**:
-    1.  [cite_start]**Full Fine-Tuning**: This approach updates all the parameters of the pretrained model during training[cite: 12]. It is resource-intensive but often yields the highest performance.
-    2.  [cite_start]**LoRA (Low-Rank Adaptation)**: A parameter-efficient fine-tuning (PEFT) technique that freezes the pretrained model weights and injects trainable low-rank decomposition matrices into the layers of the Transformer[cite: 13]. This dramatically reduces the number of trainable parameters, leading to faster training and lower memory usage.
+    1. **Full Fine-Tuning**: This approach updates all the parameters of the pretrained model during training. It is resource-intensive but often yields the highest performance.
+    2.  **LoRA (Low-Rank Adaptation)**: A parameter-efficient fine-tuning (PEFT) technique that freezes the pretrained model weights and injects trainable low-rank decomposition matrices into the layers of the Transformer. This dramatically reduces the number of trainable parameters, leading to faster training and lower memory usage.
 
 ## ⚙️ Installation
 
@@ -47,8 +47,8 @@ To set up the environment and install the required dependencies, follow these st
 
 1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/your-username/your-repo-name.git](https://github.com/your-username/your-repo-name.git)
-    cd your-repo-name
+    git clone [https://github.com/Lu0928/DSA4213-Assignment3.git]
+    cd DSA4213-Assignment3
     ```
 
 2.  **Install dependencies:**
@@ -59,7 +59,7 @@ To set up the environment and install the required dependencies, follow these st
 
 ## 🏃 Running the Experiments
 
-[cite_start]You can reproduce all experiments with a single command[cite: 38]. The script will automatically:
+You can reproduce all experiments with a single command. The script will automatically:
 1.  Evaluate the baseline (zero-shot) performance of the pretrained model.
 2.  Perform full fine-tuning for 3 epochs.
 3.  Perform LoRA fine-tuning for 3 epochs.
@@ -74,7 +74,7 @@ python main.py
 
 ## 🛠️ Experimental Setup
 
-[cite_start]The key hyperparameters used for the training process are detailed below[cite: 24]:
+The key hyperparameters used for the training process are detailed below:
 
 | Hyperparameter              | Full Fine-Tuning | LoRA Fine-Tuning |
 | --------------------------- | ---------------- | ---------------- |
@@ -86,7 +86,7 @@ python main.py
 | **LoRA `r` (rank)** | N/A              | 4                |
 | **LoRA `alpha`** | N/A              | 32               |
 
-[cite_start]Evaluation is performed after each epoch, and the model with the best performance on the evaluation set is saved and used for the final report[cite: 15]. [cite_start]The metrics used are **Accuracy** and weighted **F1 Score**[cite: 16].
+Evaluation is performed after each epoch, and the model with the best performance on the evaluation set is saved and used for the final report. The metrics used are **Accuracy** and weighted **F1 Score**.
 
 ## 📈 Results
 
@@ -102,8 +102,8 @@ Here is a summary of the final evaluation results on the test set.
 
 ## 💡 Key Takeaways and Limitations
 
-* **Effectiveness of Fine-Tuning**: Both fine-tuning methods dramatically outperformed the zero-shot baseline, which performed at chance level. [cite_start]This highlights the necessity of adapting pretrained models to specific downstream tasks[cite: 2].
-* **Performance vs. Efficiency**: Full fine-tuning achieved the highest accuracy. However, LoRA achieved a highly competitive score while only training **~1.03%** of the total parameters. [cite_start]This demonstrates the power of PEFT methods in achieving excellent results with a fraction of the computational cost and memory, making them ideal for scenarios with limited resources[cite: 18].
+* **Effectiveness of Fine-Tuning**: Both fine-tuning methods dramatically outperformed the zero-shot baseline, which performed at chance level. This highlights the necessity of adapting pretrained models to specific downstream tasks.
+* **Performance vs. Efficiency**: Full fine-tuning achieved the highest accuracy. However, LoRA achieved a highly competitive score while only training **~1.03%** of the total parameters. This demonstrates the power of PEFT methods in achieving excellent results with a fraction of the computational cost and memory, making them ideal for scenarios with limited resources.
 * **Limitations**: The hyperparameter search was minimal. Further tuning of parameters like the learning rate, LoRA rank (`r`), and alpha could potentially close the small performance gap between LoRA and full fine-tuning. The experiment was also limited to a single dataset and model architecture.
 
 ## 💬 Interactive Sentiment Prediction
